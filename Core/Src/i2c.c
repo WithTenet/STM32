@@ -61,7 +61,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
     PB6     ------> I2C1_SCL
     PB7     ------> I2C1_SDA
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
+    GPIO_InitStruct.Pin = IIC_SCL_Pin|IIC_SDA_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -91,9 +91,9 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
     PB6     ------> I2C1_SCL
     PB7     ------> I2C1_SDA
     */
-    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_6);
+    HAL_GPIO_DeInit(IIC_SCL_GPIO_Port, IIC_SCL_Pin);
 
-    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_7);
+    HAL_GPIO_DeInit(IIC_SDA_GPIO_Port, IIC_SDA_Pin);
 
   /* USER CODE BEGIN I2C1_MspDeInit 1 */
 
@@ -113,7 +113,8 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* i2cHandle)
  * @return int 成功返回0，失败返回1
  */
 int IIC_Byte_Write(unsigned char slave_addr,unsigned char reg_addr,unsigned short lens,unsigned char* data){
-	return HAL_I2C_Mem_Write(&hi2c1, slave_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, data, lens, 200);
+	HAL_I2C_Mem_Write(&hi2c1, slave_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, data, lens, 100);
+	return 0;
 }
 
 /**
@@ -126,7 +127,8 @@ int IIC_Byte_Write(unsigned char slave_addr,unsigned char reg_addr,unsigned shor
  * @return int 成功返回0，失败返回1
  */
 int IIC_Byte_Read(unsigned char slave_addr,unsigned char reg_addr,unsigned short lens,unsigned char* data){
-	return HAL_I2C_Mem_Read(&hi2c1, slave_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, data, lens, 200);
+	HAL_I2C_Mem_Read(&hi2c1, slave_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, data, lens, 100);
+	return 0;
 
 }
 
@@ -140,20 +142,11 @@ int IIC_Byte_Read(unsigned char slave_addr,unsigned char reg_addr,unsigned short
  * @return int 成功返回0，失败返回1
  */
 int Sensor_Write(uint8_t slave_addr,uint8_t reg_addr,unsigned short lens,uint8_t* data){
-    int ret=0,retries=0;
-    static unsigned int NUM  = 55;
-Again:  
+    int ret=0;
     ret = 0;
     ret = IIC_Byte_Write( slave_addr, reg_addr, lens, data);
 
-    if(ret && NUM)
-    {
-       if( retries++ > 4 )
-          return ret;
-        
-       Soft_Dely(0XFFFFF);
-       goto Again;
-    } 
+    
     return ret;
     
 }
@@ -168,20 +161,10 @@ Again:
  * @return int 成功返回0，失败返回1
  */
 int Sensor_Read(uint8_t slave_addr,uint8_t reg_addr,unsigned short lens,uint8_t* data){
-    int ret=0,retries=0;
-    static unsigned int NUM  = 55;
-Again:  
+    int ret=0;
+
     ret = 0;
     ret = IIC_Byte_Read( slave_addr, reg_addr, lens, data);
-
-    if(ret && NUM)
-    {
-        if( retries++ > 4 )
-            return ret;
-    
-        Soft_Dely(NUM);
-        goto Again;
-    } 
     return ret;
 }
 

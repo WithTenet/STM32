@@ -202,7 +202,7 @@ void  OS_CPU_SysTickInit (void)
     INT32U  cnts;
 
 		//HAL_RCC_GetSysClockFreq()获取系统时钟频率
-    cnts = HAL_RCC_GetSysClockFreq()/ OS_TICKS_PER_SEC;
+    cnts = HAL_RCC_GetHCLKFreq()/ OS_TICKS_PER_SEC;
 
 	SysTick_Config(cnts);
 }

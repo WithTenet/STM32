@@ -64,9 +64,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     PD8     ------> USART3_TX
     PD9     ------> USART3_RX
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
+    GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF7_USART3;
     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
@@ -92,7 +92,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
     PD8     ------> USART3_TX
     PD9     ------> USART3_RX
     */
-    HAL_GPIO_DeInit(GPIOD, GPIO_PIN_8|GPIO_PIN_9);
+    HAL_GPIO_DeInit(GPIOD, USART_TX_Pin|USART_RX_Pin);
 
   /* USER CODE BEGIN USART3_MspDeInit 1 */
 
@@ -123,7 +123,7 @@ void USART_NItSend(unsigned char* DataToSend, uint8_t data_num)
 int fputc(int ch,FILE *f)
 {
     uint8_t temp[1]={ch};
-    HAL_UART_Transmit(&huart3,temp,1,2);        //UartHandleÊÇ´®¿ÚµÄ¾ä±ú
+    HAL_UART_Transmit(&huart3,temp,1,2);       
 		return ch;
 }
 

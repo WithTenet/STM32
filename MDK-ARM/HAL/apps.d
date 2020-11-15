@@ -44,3 +44,4 @@ hal\apps.o: ../Core/Inc/hmc5883.h
 hal\apps.o: ../Core/Inc/MahonyAHRS.h
 hal\apps.o: ../Core/Inc/tim.h
 hal\apps.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+hal\apps.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

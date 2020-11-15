@@ -11,7 +11,7 @@
 #define HMC5883L_IDENTIFICATION_B 0x0B
 #define HMC5883L_IDENTIFICATION_C 0x0C
 
-#define HMC5883L_ADDRESS          0x1E            
+#define HMC5883L_ADDRESS          0x3C            
 
 int HMC_Read(uint8_t* hmc);
 void HMC_Init(void);

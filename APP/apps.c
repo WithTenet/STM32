@@ -1,4 +1,5 @@
 #include "apps.h"
+#include "stdio.h"
 //变量声明
 extern uint8_t gyroOffset, accOffset; //用于零偏校准
 extern Acc_t acc, offsetAcc; //原始数据、零偏数据

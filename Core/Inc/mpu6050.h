@@ -3,7 +3,7 @@
 #include "stm32f4xx.h"
 
 
-#define MPU6050_ADDRESS         0x68
+#define MPU6050_ADDRESS         0xD0
 #define MPU6050_RA_WHO_AM_I     0x75     //查询设备地址
 #define MPU6050_RA_SMPLRT_DIV   0x19     //采样率
 #define MPU6050_GYRO_OUT        0x43     //MPU6050陀螺仪数据寄存器地址

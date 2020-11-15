@@ -59,6 +59,14 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define USART_TX_Pin GPIO_PIN_8
+#define USART_TX_GPIO_Port GPIOD
+#define USART_RX_Pin GPIO_PIN_9
+#define USART_RX_GPIO_Port GPIOD
+#define IIC_SCL_Pin GPIO_PIN_6
+#define IIC_SCL_GPIO_Port GPIOB
+#define IIC_SDA_Pin GPIO_PIN_7
+#define IIC_SDA_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

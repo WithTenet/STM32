@@ -35,4 +35,5 @@ hal\mpu6050.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 hal\mpu6050.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 hal\mpu6050.o: ../Core/Inc/usart.h
 hal\mpu6050.o: ../Core/Inc/main.h
+hal\mpu6050.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 hal\mpu6050.o: ../Core/Inc/i2c.h

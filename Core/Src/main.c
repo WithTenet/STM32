@@ -27,6 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "apps.h"
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -86,7 +87,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-	OSInit(); 
+ 
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -102,9 +103,10 @@ int main(void)
   MX_USART3_UART_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-	printf("Dfasdf");
+	BSP_Init();
 	Quat_Init();
 	Open_Calib();
+	OSInit();
 	OSTaskCreate(Task_COM,(void *)0,(OS_STK *)&Task_ComStack[TASK_COM_STK_SIZE-1],TASK_COM_PRIO );
 	OSTaskCreate(Task_AHRS,(void *)0,(OS_STK *)&Task_AHRSStack[TASK_COM_STK_SIZE-1],TASK_AHRS_PRIO );
 	OSStart();
@@ -112,12 +114,16 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//  while (1)
-//  {
-//    /* USER CODE END WHILE */
+  while (1)
+  {
+    /* USER CODE END WHILE */
 
-//    /* USER CODE BEGIN 3 */
-//  }
+    /* USER CODE BEGIN 3 */
+//			GY86_Read();
+//			HAL_Delay(0xffff);
+//			Send_Senser(acc.x, acc.y, acc.z, gyro.x * RAW_TO_ANGLE, gyro.y * RAW_TO_ANGLE, gyro.z * RAW_TO_ANGLE, mag.x, mag.y, mag.z); //发送传感器原始数据帧
+
+  }
   /* USER CODE END 3 */
 }
 
@@ -141,8 +147,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 25;
-  RCC_OscInitStruct.PLL.PLLN = 336;
+  RCC_OscInitStruct.PLL.PLLM = 4;
+  RCC_OscInitStruct.PLL.PLLN = 168;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 4;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)

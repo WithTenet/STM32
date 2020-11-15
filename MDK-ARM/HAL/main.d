@@ -45,3 +45,4 @@ hal\main.o: ../Core/Inc/mpu6050.h
 hal\main.o: ../Core/Inc/hmc5883.h
 hal\main.o: ../Core/Inc/MahonyAHRS.h
 hal\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+hal\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

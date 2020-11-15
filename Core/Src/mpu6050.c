@@ -1,5 +1,6 @@
 #include "mpu6050.h"
 #include "usart.h"
+#include "stdio.h"
 #include "i2c.h"
 /**
  * @brief MPU6050оƬ初始化
@@ -62,7 +63,7 @@ uint8_t MPU6050ReadID(void)
  */
 int MPU6050ReadAcc(uint8_t *accData)
 {
-    Sensor_Read(MPU6050_ADDRESS,MPU6050_ACC_OUT,6, accData);
+  Sensor_Read(MPU6050_ADDRESS,MPU6050_ACC_OUT,6, accData);
 	return 1;
 }
 

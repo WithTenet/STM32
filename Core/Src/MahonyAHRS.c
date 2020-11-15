@@ -268,7 +268,7 @@ void Attitude_Update(float gx, float gy, float gz, float ax, float ay, float az,
     ez = (ax * vy - ay * vx) + (mx * wy - my * wx);
 
     //由定时器获取采样周期的一半
-    halfT = Get_AHRS_Time();
+    halfT = 0.0005f;
 
     //pi运算
     if (ex != 0.0f && ey != 0.0f && ez != 0.0f) {
