@@ -31,8 +31,6 @@ hal\apps.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h
 hal\apps.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h
 hal\apps.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 hal\apps.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
-hal\apps.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
-hal\apps.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 hal\apps.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 hal\apps.o: ..\uCos-II\port\os_cfg.h
 hal\apps.o: ..\uCos-II\port\os_cpu.h
@@ -42,6 +40,5 @@ hal\apps.o: ../Core/Inc/i2c.h
 hal\apps.o: ../Core/Inc/mpu6050.h
 hal\apps.o: ../Core/Inc/hmc5883.h
 hal\apps.o: ../Core/Inc/MahonyAHRS.h
-hal\apps.o: ../Core/Inc/tim.h
 hal\apps.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 hal\apps.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

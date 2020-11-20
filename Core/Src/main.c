@@ -20,7 +20,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "i2c.h"
-#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -55,7 +54,7 @@ Mag_t mag; //原始数据
 Float_t fGyro; //角速度数据（rad）
 Angle_t angle; //姿态解算-角度值
 uint8_t sendBuf[50];//发送缓存
-
+uint16_t PWM_IN_CH[4];
 OS_STK		Task_ComStack[TASK_COM_STK_SIZE];
 OS_STK		Task_AHRSStack[TASK_COM_STK_SIZE];
 /* USER CODE END PV */
@@ -101,7 +100,6 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_USART3_UART_Init();
-  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 	BSP_Init();
 	Quat_Init();

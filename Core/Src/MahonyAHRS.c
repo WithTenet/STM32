@@ -307,31 +307,31 @@ void Attitude_Update(float gx, float gy, float gz, float ax, float ay, float az,
     angle.yaw = atan2(2.0f * (q0 * q3 + q1 * q2), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3) * RAD_TO_ANGLE;
 }
 
-/**
- * @brief 初始化姿态解算的时钟
- * 
- */
-void AHRS_Time_Init(void)
-{
-	MX_TIM2_Init();
-}
+///**
+// * @brief 初始化姿态解算的时钟
+// * 
+// */
+//void AHRS_Time_Init(void)
+//{
+//	MX_TIM2_Init();
+//}
 
-/**
- * @brief 获取姿态解算半周期时间
- * 
- * @return float 返回半周期
- */
-float Get_AHRS_Time(void)
-{
-    float temp = 0;
-    static uint32_t now = 0;
+///**
+// * @brief 获取姿态解算半周期时间
+// * 
+// * @return float 返回半周期
+// */
+//float Get_AHRS_Time(void)
+//{
+//    float temp = 0;
+//    static uint32_t now = 0;
 
-    // 获取计数器值
-    now = TIM2->CNT;
-    // 清空计数器值
-    TIM2->CNT = 0;
-    // 计数器值转换为时间并除以2
-    temp = (float)now / 2000000.0f;
+//    // 获取计数器值
+//    now = TIM2->CNT;
+//    // 清空计数器值
+//    TIM2->CNT = 0;
+//    // 计数器值转换为时间并除以2
+//    temp = (float)now / 2000000.0f;
 
-    return temp;
-}
+//    return temp;
+//}

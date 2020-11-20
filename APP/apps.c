@@ -7,7 +7,7 @@ extern Gyro_t gyro, offsetGyro; //原始数据、零偏数据
 extern Mag_t mag; //原始数据
 extern Float_t fGyro; //角速度数据（rad）
 extern Angle_t angle; //姿态解算-角度值
-
+extern uint16_t PWM_IN_CH[4];
 
 /**
  * @brief 串口任务函数
@@ -18,7 +18,7 @@ void Task_COM(void *p_arg){
 	OS_CPU_SysTickInit();
 	while (1) {
         Send_Senser(acc.x, acc.y, acc.z, gyro.x * RAW_TO_ANGLE, gyro.y * RAW_TO_ANGLE, gyro.z * RAW_TO_ANGLE, mag.x, mag.y, mag.z); //发送传感器原始数据帧
-        
+//        Send_RCData_Motor(PWM_IN_CH[2], PWM_IN_CH[0], PWM_IN_CH[3], PWM_IN_CH[1], 0, 0, 0, 0); //发送遥控器数据和电机速度数据帧
 				if (!Calib_Status()) { //零偏校准结束
             Send_Attitude(angle.roll, angle.pitch, angle.yaw); //发送姿态数据帧
         }

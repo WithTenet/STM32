@@ -6,7 +6,6 @@
 "hal\main.o"
 "hal\gpio.o"
 "hal\i2c.o"
-"hal\tim.o"
 "hal\usart.o"
 "hal\stm32f4xx_it.o"
 "hal\stm32f4xx_hal_msp.o"

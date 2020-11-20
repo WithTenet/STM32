@@ -1,6 +1,5 @@
 #ifndef MahonyAHRS_H
 #define MahonyAHRS_H
-#include "tim.h"
 #include "stm32f4xx.h"
 #include "math.h"
 
@@ -12,7 +11,6 @@
 
 #define FILTER_NUM 2
 
-extern TIM_HandleTypeDef htim2;
 
 typedef enum {
     ACC_GYRO_MAG = 0,
